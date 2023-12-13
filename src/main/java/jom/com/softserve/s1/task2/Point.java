@@ -14,14 +14,14 @@ public class Point {
     }
 
     public double distance(int x, int y) {
-        return Math.sqrt((double) (this.x - x) * (this.x - x) + (this.y - y) * (this.y - y));
+        return Math.sqrt(Math.pow(x - this.x, 2) + Math.pow(y - this.y, 2));
     }
 
     public double distance(Point point) {
-        return Math.sqrt((double) (this.x - point.x) * (this.x - point.x) + (this.y - point.y) * (this.y - point.y));
+        return distance(point.x, point.y);
     }
 
     public double distance() {
-        return Math.sqrt((double) (this.x) * (this.x) + (this.y) * (this.y));
+        return distance(0, 0);
     }
 }
