@@ -9,13 +9,10 @@ class Operation {
     }
 
     public static int trySquareRectangle(int a, int b) {
-        if (a <= 0 || b <= 0) {
-            return -1;
-        }
         try {
             return squareRectangle(a, b);
         } catch (IllegalArgumentException e) {
-            throw new RuntimeException(e);
+           return -1;
         }
     }
 }
