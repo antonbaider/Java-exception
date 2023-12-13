@@ -1,22 +1,14 @@
 package jom.com.softserve.s1.task6;
 
 public class Plant {
-    public static Plant tryCreatePlant(String type, String color, String name) throws ColorException, TypeException {
+    public static Plant tryCreatePlant(String type, String color, String name) {
+        Plant plant = null;
         try {
-            return new Plant(type, color, name);
-        } catch (ColorException ex) {
-            try {
-                return new Plant(type, "Red", name);
-            } catch (ColorException | TypeException exs) {
-                return new Plant("Ordinary", "Red", name);
-            }
-
-        } catch (TypeException ex) {
-            try {
-                return new Plant("Ordinary", color, name);
-            } catch (ColorException | TypeException exs) {
-                return new Plant("Ordinary", "Red", name);
-            }
+            plant = new Plant(type, color, name);
+        } catch (ColorException ce) {
+            plant = tryCreatePlant(type, "Red", name);
+        } catch (TypeException te) {
+            plant = tryCreatePlant("Ordinary", color, name);
         }
+        return plant;
     }
-}
